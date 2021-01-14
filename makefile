@@ -1,12 +1,12 @@
-all:main
+all: bin/main
 
-main:src/course.cpp
-	g++ src/course.cpp -o bin/main
+bin/main: obj/main.o
+	g++ -Wall -Werror obj/main.o -o bin/main
+obj/main.o: src/main.cpp
+	g++ -I include -c src/main.cpp -o obj/main.o
 run:
 	bin/./main
 
-clean:
-	rm  bin/main
-	
-checkdir:
-	mkdir -p bin
+clear:
+	rm -rf bin/main
+	rm -rf obj/*.o
