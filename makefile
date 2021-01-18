@@ -1,7 +1,7 @@
 all:main
 
 main:src/course.cpp
-	g++ src/course.cpp -o bin/main
+	g++ src/main.cpp -o bin/main
 run:
 	bin/./main
 

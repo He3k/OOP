@@ -6,24 +6,29 @@ using namespace std;
 
 class Show{ // abstruct class
     public:
-        virtual const char* speak() { return "-"; }
+        virtual void speak() = 0;
 };
+
 class Students : public Show { // inheritance
     private:
         list<string>::iterator i;
     public:
+	void speak()
+    	{
+        	cout << ":::::::::::" <<  endl;
+    	}
         char* k="All";
         Students(); // constructor
         Students(int x); // constructor with element
         int print(list<string> Spisok){
             cout << "Students" << "\n";
             for(i = Spisok.begin(); i != Spisok.end(); i++)
-            cout << speak() << (*i) << "\n";
+            cout << (*i) << "\n";
         }
 };
 
 Students::Students(){ // constructor
-    cout << "" << "\n";
+    cout << "";
 }
 Students::Students(int x){ // constructor with element
     cout << "\n" << "------------------" << "\n";
@@ -32,13 +37,17 @@ Students::Students(int x){ // constructor with element
 class IVT : public Students{ // inheritance
     private:
         list<string>::iterator i, pe;
-    public:       
+    public:
+	void speak()
+    	{
+        	cout << "+++++++++++" <<  endl;
+    	}      
         int print(list<string> Spisok){
             cout << "\n" << "IVT" << "\n";
             pe = Spisok.begin();
             advance(pe,3);
             for(i = Spisok.begin(); i != pe; i++)
-                cout << speak() << (*i) << "\n";
+                cout << (*i) << "\n";
             cout << (k);
         }
 };
@@ -48,6 +57,10 @@ class MTS : public Students{ // inheritance
     private:
         list<string>::iterator i, pb, pe;
     public:
+	void speak()
+    	{
+        	cout << "===========" <<  endl;
+    	}
         int print(list<string> Spisok){
             cout << "\n" << "MTS" << "\n";
             pb = Spisok.begin();
@@ -55,7 +68,7 @@ class MTS : public Students{ // inheritance
             pe = Spisok.begin();
             advance(pe,6);
             for(i = pb; i != pe; i++)
-                cout << speak() << (*i) << "\n";
+                cout << (*i) << "\n";
             cout << (k);
         }
 };
@@ -63,6 +76,10 @@ class AES : public Students{ // inheritance
     private:
         list<string>::iterator i, pb, pe;
     public:
+	void speak()
+    	{
+        	cout << "+++++++++++" <<  endl;
+    	}
         int print(list<string> Spisok){
             cout << "\n" << "AES" << "\n";
             pb = Spisok.begin();
@@ -70,7 +87,7 @@ class AES : public Students{ // inheritance
             pe = Spisok.begin();
             advance(pe,9);
             for(i = pb; i != pe; i++)
-                cout << speak() << (*i) << "\n";
+                cout << (*i) << "\n";
             cout << (k) << "\n";
         }
 };
@@ -79,6 +96,10 @@ class MRM : public Students{ // inheritance
     private:
         list<string>::iterator i, pb, pe;
     public:
+	void speak()
+    	{
+        	cout << "===========" <<  endl;
+    	}
         int print(list<string> Spisok){
             cout << "\n" << "MRM" << "\n";
             pb = Spisok.begin();
@@ -86,7 +107,7 @@ class MRM : public Students{ // inheritance
             pe = Spisok.begin();
             advance(pe,12);
             for(i = pb; i != pe; i++)
-                cout << speak() << (*i) << "\n";
+                cout << (*i) << "\n";
             cout << (k) << "\n";
         }
 };
@@ -110,23 +131,12 @@ int main(){
 
     Students students; // object
     IVT ivt; // object
-    Show show;
     MTS mts;
     AES aes;
     MRM mrm;
 
-    //Students ob1;
-    //students.print(Spisok);
-    //Students ob2(1);
+    //Show show;
 
-    //ivt.print(Spisok);
-    //cout << show.speak();
-    
-    //mts.print(Spisok);
-    //aes.print(Spisok);
-    //mrm.print(Spisok);
-    
-    
     int i;
     while (i != 9){
         cout << "\n" << "Please choise option ";
@@ -134,26 +144,31 @@ int main(){
         << "\n" << "3) AES" << "\n" << "4) MRM" << "\n" << "9) exit" << "\n";
         cin >> i;
         if(i == 0){
+	    students.speak();
             Students ob1;
             students.print(Spisok);
             Students ob2(1);
         }
         else if (i == 1){
+	    ivt.speak();
             Students ob1;
             ivt.print(Spisok);
             Students ob2(1);
         }
-        else if (i == 2){ 
+        else if (i == 2){
+	    mts.speak(); 
             Students ob1;
             mts.print(Spisok);
             Students ob2(1);
         }
         else if (i == 3){
+	    aes.speak();
             Students ob1;
             aes.print(Spisok);
             Students ob2;
         }
         else if (i == 4){
+	    mrm.speak();
             Students ob1;
             mrm.print(Spisok);
             Students ob2(1);
